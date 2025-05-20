@@ -7,7 +7,7 @@ import {OpenAI} from 'openai';
 const app = express();
 const port = 5000;
 
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY
 })
