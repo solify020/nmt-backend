@@ -45,13 +45,19 @@ app.post('/analysis', async (req: Request, res: Response) => {
     way_to_success is the way to success of the token.
   `
   
-  const response = await openai.chat.completions.create({
-    model: "gpt-4",
-    messages: [
-      { role: "system", content: "You are a meme coin analyzer." },
-      { role: "user", content: prompt }
-    ]
-  });
+  // const response = await openai.chat.completions.create({
+  //   model: "gpt-4",
+  //   messages: [
+  //     { role: "system", content: "You are a meme coin analyzer." },
+  //     { role: "user", content: prompt }
+  //   ]
+  // });
+
+    const response = await openai.responses.create({
+      model: "gpt-4.1",
+      tools: [{type: "web_search_preview_2025_03_11"}],
+      input: prompt
+    })
 
     res.json(response);
   } catch (err: any) {
